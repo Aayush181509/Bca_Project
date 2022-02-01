@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.xml.crypto.Data;
 
 public class ResultPage {
     JFrame f;
@@ -15,13 +14,13 @@ public class ResultPage {
     private JLabel hindi;
     private JLabel computer;
     String[] values;
-    ResultPage(){
+    ResultPage(String search){
         db=new DatabaseOperations();
         f = new JFrame("Dashboard Form");
         f.setContentPane(mainPanel);
         f.setSize(500, 500);
         if(db.connectToDatabase()){
-            values=db.votingResults("8131");
+            values=db.studentResults(search);
             name.setText(values[1]);
             standard.setText(values[3]);
             school.setText(values[2]);

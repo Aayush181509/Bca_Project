@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DashboardPage {
+    String search;
     JFrame f;
     DatabaseOperations db;
     private JTextField textField1;
@@ -16,6 +17,8 @@ public class DashboardPage {
     private JTextField textField9;
     private JButton doneButton;
     private JPanel mainPanel;
+    private JButton searchForResultButton;
+    private JTextField textField10;
 
     DashboardPage() {
         db = new DatabaseOperations();
@@ -36,6 +39,13 @@ public class DashboardPage {
                 }
         }
     });
-}
+        searchForResultButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                search=textField10.getText();
+                new ResultPage(search);
+            }
+        });
+    }
 }
 

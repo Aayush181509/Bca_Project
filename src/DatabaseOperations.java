@@ -68,7 +68,7 @@ public class DatabaseOperations {
             return false;
         }
     }
-    public String[] votingResults(String roll_no){
+    public String[] studentResults(String roll_no){
         String sql_stmt;
         try {
             String roll="",name="",school="";
