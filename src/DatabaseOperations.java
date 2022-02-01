@@ -13,15 +13,22 @@ public class DatabaseOperations {
             conn= DriverManager.getConnection(URL,username,password);
             return true;
         }catch (Exception e){
+            System.out.println(e.toString());
             return false;
         }
     }
-    public boolean insertToDatabase(String value1,String value2){
+    public boolean insertToDatabase(String roll_no,String name,String school_name,int standard,int maths,int science,int english,int hindi,int computer){
         try{
-            PreparedStatement stmt=conn.prepareStatement("INSERT INTO voting_results values(?,?,?)");
-            stmt.setInt(1,i++);
-            stmt.setString(2,value1);
-            stmt.setString(3,value2);
+            PreparedStatement stmt=conn.prepareStatement("INSERT INTO student_data values(?,?,?,?,?,?,?,?,?)");
+            stmt.setString(1,roll_no);
+            stmt.setString(2,name);
+            stmt.setString(3,school_name);
+            stmt.setInt(4,standard);
+            stmt.setInt(5,maths);
+            stmt.setInt(6,science);
+            stmt.setInt(7,english);
+            stmt.setInt(8,hindi);
+            stmt.setInt(9,computer);
             int i=stmt.executeUpdate();
             return true;
         }catch (Exception e){
