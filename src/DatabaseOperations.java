@@ -68,18 +68,27 @@ public class DatabaseOperations {
             return false;
         }
     }
-    public String[] votingResults(){
+    public String[] votingResults(String roll_no){
+        String sql_stmt;
         try {
-            String voteForCandidate1="0";
-            String voteForCandidate2="0";
+            String roll="",name="",school="";
+            int standard=0,maths=0,science=0,english=0,hindi=0,computer=0;
             Statement stmt=conn.createStatement();
-            ResultSet rs=stmt.executeQuery("Select results_for_candidate1 as cand1,results_for_candidate2 as cand2 from voting_results where id=(Select max(id) from voting_results)");
+            sql_stmt="Select * from student_data where roll_no='"+roll_no+"'";
+            ResultSet rs=stmt.executeQuery(sql_stmt);
             while (rs.next()){
-                voteForCandidate1=rs.getString("cand1");
-                voteForCandidate2=rs.getString("cand2");
-
+                roll=rs.getString(1);
+                name=rs.getString(2);
+                school=rs.getString(3);
+                standard=rs.getInt(4);
+                maths=rs.getInt(5);
+                science=rs.getInt(6);
+                english=rs.getInt(7);
+                hindi=rs.getInt(8);
+                computer=rs.getInt(9);
             }
-            return new String[]{voteForCandidate1,voteForCandidate2};
+            return new String[]{roll,name,school,Integer.toString(standard),Integer.toString(maths),
+                    Integer.toString(science),Integer.toString(english),Integer.toString(hindi),Integer.toString(computer)};
         }catch (Exception e){
             System.out.println(e.getMessage());
             return new String[]{"1000","1000"};
