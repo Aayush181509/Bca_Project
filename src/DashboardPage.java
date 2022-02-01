@@ -43,7 +43,7 @@ public class DashboardPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 search=textField10.getText();
-                new ResultPage(search);
+                new StudentResult(search);
             }
         });
     }
